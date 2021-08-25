@@ -70,12 +70,13 @@ class Rect
         Graphics2D g2d = (Graphics2D) g;
         
         //consertar/ajustar bordas
-        BasicStroke bs1 = new BasicStroke(8, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
-	g2d.setStroke(bs1);
+       BasicStroke bs1 = new BasicStroke(3, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
+       g2d.setStroke(bs1);
+        
+        g2d.setColor(this.BckgColor);
+        g2d.fillRect(this.x, this.y, this.w, this.h);
         
         g2d.setColor( this.BorderColor);
         g2d.drawRect(this.x,this.y, this.w,this.h);
-        g2d.setColor(this.BckgColor);
-        g2d.fillRect(this.x, this.y, this.w, this.h);
     }
 }

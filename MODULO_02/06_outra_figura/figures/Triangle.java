@@ -32,13 +32,11 @@ public class Triangle
 		int x[]={this.x, this.x-w,this.x+w};
 		int y[]={this.y, this.y+w, this.y+w};
 		
-		g2d.setColor(this.BorderColor);
-		g2d.drawPolygon(x,y,3);
-		
 		g2d.setColor(this.BckgColor);
 		g2d.fillPolygon(x,y,3);
 		
-		
+		g2d.setColor(this.BorderColor);
+		g2d.drawPolygon(x,y,3);
 		
         }
 }

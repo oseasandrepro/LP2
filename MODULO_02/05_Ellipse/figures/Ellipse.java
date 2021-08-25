@@ -35,9 +35,10 @@ public class Ellipse
         BasicStroke bs1 = new BasicStroke(4, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND);
 	g2d.setStroke(bs1);
 	
+	g2d.setColor(this.BckgColor);
+        g2d.fill(new Ellipse2D.Double(this.x, this.y, this.w,this.h));
+        
 	g2d.setColor(this.BorderColor);
         g2d.draw(new Ellipse2D.Double(this.x,this.y, this.w,this.h));
-        g2d.setColor(this.BckgColor);
-        g2d.fill(new Ellipse2D.Double(this.x, this.y, this.w,this.h));
     }
 }
