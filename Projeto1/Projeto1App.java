@@ -17,18 +17,22 @@ class Projeto1App
 
 class ListFrame extends JFrame
 {
+	Point pointOfmouse;
+	Figure selectedFigure;
+	Point prevPt;
 	int defaultH = 80;
 	int defaultW = 80;
 	
 	int windowH = 500;
 	int windowW = 500;
 	
+	
 	ArrayList<Figure> fg = new ArrayList<Figure>();
 	Random rand = new Random();
 	
 	ListFrame() 
 	{
-		
+  		
 		this.addWindowListener (
 		    new WindowAdapter() 
 		    {
@@ -42,8 +46,8 @@ class ListFrame extends JFrame
 			new KeyAdapter() {
 				public void keyPressed(KeyEvent evt)
 				{
-				int x = rand.nextInt(windowW);
-				int y = rand.nextInt(windowH);
+				int x = (int)pointOfmouse.getX();
+				int y = (int)pointOfmouse.getY();
 				int w = defaultH;
 				int h = defaultW;
 				if( evt.getKeyChar() == 'r')
@@ -69,16 +73,82 @@ class ListFrame extends JFrame
 		}
 			
 		);
+		
+		this.addMouseListener(
+		new MouseAdapter(){
+			 public void mousePressed(MouseEvent evt) 
+			 {
+			  prevPt = evt.getPoint();
+			  for( Figure fig: fg)
+			  {
+				if( (prevPt.getX()>=fig.x && prevPt.getX()<=fig.x+fig.w) && (prevPt.getY()>=fig.y && prevPt.getY()<=fig.y+fig.h) ){
+					selectedFigure = fig;
+					break;
+				}
+			  }
+			 }
+			 
+			 public void mouseReleased(MouseEvent evt) {
+				if(selectedFigure != null)
+					selectedFigure = null;
+			}
+		}
+		);
+		
+		this.addMouseMotionListener(
+			new MouseMotionAdapter(){
+				public void mouseDragged(MouseEvent evt){
+   					if( selectedFigure!=null)
+   					{
+			   		Point currentPt = evt.getPoint();
+			   		selectedFigure.x = (int)currentPt.getX();
+			   		selectedFigure.y = (int)currentPt.getY();
+			   		
+			   		prevPt = currentPt;
+			   		repaint();
+			   		}
+			   	}  
+			  
+			  public void mouseMoved(MouseEvent evt){
+			  pointOfmouse = evt.getPoint();
+			  prevPt = pointOfmouse;
+			  for( Figure fig: fg)
+			  {
+				if( (prevPt.getX()>=fig.x && prevPt.getX()<=fig.x+fig.w) && (prevPt.getY()>=fig.y && prevPt.getY()<=fig.y+fig.h) ){
+					selectedFigure = fig;
+					repaint();
+					break;
+			   }
+			  }
+			}
+		   }
+		);
+		
 		this.getContentPane().setBackground(Color.WHITE);
 		this.setTitle("Projeto1App");
         	this.setSize(500, 500);
-	}
+      
+   }
 
 	public void paint(Graphics g)
 	{
 		super.paint(g);
-		for( Figure fig: this.fg){
+		for( Figure fig: this.fg)
+		{
 			fig.paint(g);
 		}
+		if( selectedFigure != null){
+			rectForSelectedFigure(g);
+		}
+	}
+	
+	public void rectForSelectedFigure(Graphics g)
+	{
+		Graphics2D g2d = (Graphics2D) g;
+		BasicStroke bs1 = new BasicStroke(3, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
+		g2d.setStroke(bs1);
+	
+		g2d.setColor(Color.RED);
+		g2d.drawRect(selectedFigure.x-5,selectedFigure.y-5, selectedFigure.w+10,selectedFigure.h+10);
 	}
 }

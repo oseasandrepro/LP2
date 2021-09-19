@@ -6,19 +6,9 @@ import java.awt.BasicStroke;
 
 public class Triangle extends Figure
 {
-	int x, y;
-	int w, h;
-	Color BorderColor;
-	Color BckgColor;
-	
 	public Triangle(int x,int y, int w,int h, Color BorderColor, Color BckgColor)
 	{
-		this.x = x; 
-		this.y = y;
-		this.w = w;
-		this.h = h;
-		this.BorderColor = BorderColor;
-		this.BckgColor = BckgColor;
+		super(x, y, w, h, BorderColor, BckgColor);
 	}
 	
 	public void paint (Graphics g) 

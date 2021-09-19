@@ -18,7 +18,7 @@ public class Roundrect extends Figure
         Graphics2D g2d = (Graphics2D) g;
         
         //consertar/ajustar bordas
-       	BasicStroke bs1 = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND);
+       BasicStroke bs1 = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND);
 	g2d.setStroke(bs1);
         
         g2d.setColor( this.BorderColor);

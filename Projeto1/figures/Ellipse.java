@@ -6,19 +6,9 @@ import java.awt.BasicStroke;
 
 public class Ellipse extends Figure
 {
-    int x, y;
-    int w, h;
-    Color BorderColor;
-    Color BckgColor;
-
     public Ellipse (int x, int y, int w, int h, Color BorderColor, Color BckgColor)
     {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.BorderColor = BorderColor;
-        this.BckgColor = BckgColor;
+    	super(x, y, w, h, BorderColor, BckgColor);
     }
 
     public void print()
@@ -36,10 +26,10 @@ public class Ellipse extends Figure
 	g2d.setStroke(bs1);
 	
 	g2d.setColor(this.BorderColor);
-        g2d.draw(new Ellipse2D.Double(this.x,this.y, this.w,this.h));
+        g2d.draw(new Ellipse2D.Double(this.x, this.y, this.w, this.h));
 	
 	g2d.setColor(this.BckgColor);
-        g2d.fill(new Ellipse2D.Double(this.x, this.y, this.w,this.h));
+        g2d.fill(new Ellipse2D.Double(this.x, this.y, this.w, this.h));
         
     }
 }

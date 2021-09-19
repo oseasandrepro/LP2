@@ -3,19 +3,10 @@ import java.awt.*;
 
 public class Rect extends Figure 
 {
-    int x, y;
-    int w, h;
-    Color BorderColor;
-    Color BckgColor;
 
     public Rect (int x, int y, int w, int h, Color BorderColor, Color BckgColor) 
     {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-        this.BorderColor = BorderColor;
-        this.BckgColor = BckgColor;
+       super(x, y, w, h, BorderColor, BckgColor);
     }
 
     void print () {
@@ -28,7 +19,7 @@ public class Rect extends Figure
         Graphics2D g2d = (Graphics2D) g;
         
         //consertar/ajustar bordas
-       BasicStroke bs1 = new BasicStroke(3, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
+        BasicStroke bs1 = new BasicStroke(3, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
 	g2d.setStroke(bs1);
         
         g2d.setColor( this.BorderColor);
