@@ -1,0 +1,4 @@
+nenhum:		visível somente no pacote
+private:	visível somene na classe
+protected:	visível no pacote e subclasses
+public:		visível por todos
