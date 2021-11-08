@@ -1,2 +1,3 @@
 *.class
+*.o
 MODULO_02/01_struct_VS_class/struct_texto

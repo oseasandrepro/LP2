@@ -1,0 +1,1 @@
+import java.util.*; public class LinkedStack implements IStackable{	   private LinkedList l = new LinkedList();	   	    public int size(){	    	return l.size();	    }	    	    public void push (int v){	    	l.addFirst(v);	    }	    	    public int  pop(){	    	int x;	    	x = (int)l.getFirst();	    	l.removeFirst();	    	return x;	    }}
